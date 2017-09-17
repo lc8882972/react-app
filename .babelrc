@@ -10,7 +10,8 @@
                     // Remove after https://github.com/mishoo/UglifyJS2/issues/448
                     "uglify": true
                 },
-                "useBuiltIns": true
+                "useBuiltIns": true,
+                "modules": false
             }
         ],
         "react"
@@ -47,7 +48,8 @@
         "development": {
             "plugins": [
                 "transform-react-jsx-source",
-                "transform-react-jsx-self"
+                "transform-react-jsx-self",
+                "react-hot-loader/babel"
             ]
         }
     }

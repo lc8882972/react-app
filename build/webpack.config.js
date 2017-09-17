@@ -5,8 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 var config = {
   entry: [
+    'react-hot-loader/patch',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-    './src/main.js'
+    './src/index.js'
   ],
   output: {
     publicPath: '/',
