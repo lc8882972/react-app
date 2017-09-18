@@ -3,13 +3,6 @@
         [
             "env",
             {
-                "targets": {
-                    // React parses on ie 9, so we should too
-                    "ie": 9,
-                    // We currently minify with uglify
-                    // Remove after https://github.com/mishoo/UglifyJS2/issues/448
-                    "uglify": true
-                },
                 "useBuiltIns": true,
                 "modules": false
             }
@@ -17,7 +10,8 @@
         "react"
     ],
     "plugins": [
-        "transform-class-properties", [
+        "transform-class-properties",
+        [
             "transform-object-rest-spread",
             {
                 "useBuiltIns": true

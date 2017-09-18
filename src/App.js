@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { createStore, combineReducers } from 'redux'
-import { Provider, connect } from 'react-redux'
+import { Provider } from 'react-redux'
 import { routerReducer } from 'react-router-redux'
 
 
@@ -18,8 +18,6 @@ const store = createStore(
 
 class App extends Component {
   render() {
-    const { dispatch } = this.props
-
     return (
       <Provider store={store}>
         <RouterConfig />

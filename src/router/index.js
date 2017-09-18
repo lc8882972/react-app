@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-ro
 
 import Home from '../views/home';
 import List from '../views/list';
-import CLayout from '../views/layout';
+import Collapse from '../views/collapse';
 
 // const history = createHistory()
 
@@ -56,7 +56,7 @@ class RouterConfig extends React.Component {
           <Route path="/home" component={Home} />
           <Route path="/list" component={List} />
           <Route path="/topics" component={Topics} />
-          <Route path="/layout" component={CLayout} />
+          <Route path="/collapse" component={Collapse} />
         </Switch>
       </Router>
     );

@@ -1,0 +1,29 @@
+.item {
+  margin-left: 17px;
+  border-bottom: 1px solid #dfdfdf;
+  padding: 22px 0 23.5px 0;
+  box-sizing: border-box;
+}
+
+/* .avatar {
+  width: 81px;
+  height: 81px;
+} */
+
+.item-box {
+  margin-left: 19px;
+}
+
+.title {
+  margin-top: 10px;
+  line-height: 1;
+  font-size: 15px;
+  color: #333;
+}
+
+.desc{
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
