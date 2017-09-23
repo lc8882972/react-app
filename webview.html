@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js 测试</title>
+</head>
+
+<body>
+  <div>
+    <button id="nativeCamera">照相机</button>
+    <button id="nativeShare">分享</button>
+  </div>
+  <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+  <script>
+    //Register javascrit function for Object-c invocation
+    dsBridge.register('addValue', function(r, l) {
+      return r + l;
+    })
+
+    function callNativeCamera() {
+      //Call asynchronously
+      dsBridge.call("nativeCamera", {
+        msg: "testAsyn"
+      }, function(v) {
+        alert(v);
+      })
+    }
+
+    function callNativeShare() {
+      //Call synchronously 
+      var str = dsBridge.call("nativeShare", {
+        id:1,
+        title: '最美妈妈',
+        content: '最美妈妈',
+        imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
+        imgtype: 1,
+        publishdate: '2017-09-15',
+        jumpurl: 'https:/www.baidu.com'
+      });
+    }
+
+    $(document).ready(function() {
+      $('#nativeCamera').on('click', callNativeCamera)
+      $('#nativeShare').on('click', callNativeShare)
+    })
+  </script>
+</body>
+
+</html>
