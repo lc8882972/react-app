@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import { routerReducer } from 'react-router-redux'
 
 
-import RouterConfig from './router';
+import RouterConfig from './router'
 import * as reducers from './store'
 
 const reducer = combineReducers({

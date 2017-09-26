@@ -64,6 +64,7 @@ class Home extends React.Component {
         </p>
         <Link to="/list">List Component</Link>
         <Link to="/topics">Topics Component</Link>
+        <Link to="/todo">TodoList Component</Link>
         <p>{counter}</p>
         <SayHello name='Tom'></SayHello>
 

@@ -14,10 +14,13 @@ const Title = styled.h2`
   color: #333;
 `;
 const Text = styled.p`
+  height: 3em;
   margin-top: 10px;
   font-size: 13px;
   color: #666;
   line-height: 1.5;
+  box-sizing: border-box;
+  overflow: hidden;
 `;
 
 const Item = styled.div`
@@ -56,7 +59,6 @@ ListItem.propTypes = {
 function NumberList(props) {
   const array = props.items
   const listItems = array.map((data) =>
-
     <ListItem key={data.id.toString()} data={data} />
   )
   return (
@@ -75,7 +77,7 @@ const items = [
     id: 1,
     imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
     title: '孕期胎儿十月发育过程图',
-    desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨'
+    desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨似的发射点搜索'
   },
   {
     id: 2,
