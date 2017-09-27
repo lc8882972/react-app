@@ -31,21 +31,13 @@
   width: 100%;
 }
 
-.route-wrapper {
-  position: relative;
-}
-
-.route-wrapper > div {
-  position: absolute;
-}
-
 .fade-enter {
   opacity: 0.01;
 }
 
 .fade-enter.fade-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 5000ms ease-in;
 }
 
 .fade-exit {
@@ -54,5 +46,31 @@
 
 .fade-exit.fade-exit-active {
   opacity: 0.01;
-  transition: opacity 300ms ease-in;
+  transition: opacity 3000ms ease-in;
+}
+
+.wapper{
+  position: relative;
+}
+
+.wapper > div{
+  position: absolute;
+}
+
+.slide-enter {
+  transform: translateX(-100%);
+}
+
+.slide-enter.slide-enter-active {
+  transform: translateX(0%);
+  transition: all 2000ms ease-in;
+}
+
+.slide-exit {
+  transform: translateX(0%);
+}
+
+.slide-exit.slide-exit-active {
+  transform: translateX(-100%);
+  transition: all 2000ms ease-in;
 }

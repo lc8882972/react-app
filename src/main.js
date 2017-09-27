@@ -6,7 +6,7 @@ import { routerReducer } from 'react-router-redux'
 import * as reducers from './store'
 import RouterConfig from './router'
 import './index.css'
-import "babel-polyfill";
+// import "babel-polyfill";
 
 const reducer = combineReducers({
   ...reducers,

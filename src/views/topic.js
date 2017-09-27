@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import CSSTransition from 'react-transition-group/CSSTransition'
 import Transition from 'react-transition-group/Transition'
-
+import TransitionGroup from 'react-transition-group/TransitionGroup';
 const duration = 300;
 
 const defaultStyle = {
@@ -30,18 +30,16 @@ const Fade = ({ in: inProp, children, ...props }) => (
 const FadeCSSTransition = ({ children, ...props }) => (
   <CSSTransition
     {...props}
-    timeout={500}
-    classNames="fade"
+    timeout={5000}
+    classNames="slide"
   >
     {children}
   </CSSTransition>
-);
+)
 
 const Topic = ({ match }) => (
   <div>
-    <Fade in={match.params.topicId !== ''}>
-      <h3>{match.params.topicId}</h3>
-    </Fade>
+    <h3>{match.params.topicId}</h3>
   </div>
 )
 
@@ -60,12 +58,12 @@ class Topics extends React.Component {
     return (
       <div>
         <h2>Topics</h2>
-        <Fade in={this.state.show}>I'm A fade Transition!</Fade>
+        <Fade in={ this.state.show }>I'm A fade Transition!</Fade>
         <button onClick={this.handleClick}>按钮</button>
         <ul>
           <li>
             <Link to={`${match.url}/rendering`}>
-              Rendering with React
+              Rendering with Reacts
         </Link>
           </li>
           <li>
@@ -79,6 +77,11 @@ class Topics extends React.Component {
         </Link>
           </li>
         </ul>
+        {/* <TransitionGroup className="wapper">
+          <FadeCSSTransition key={this.props.location.pathname}>
+           
+          </FadeCSSTransition>
+        </TransitionGroup> */}
         <Route path="/topics/:topicId" component={Topic} />
         <Route exact path={match.url} render={() => (
           <h3>Please select a topic.{match.url}</h3>
