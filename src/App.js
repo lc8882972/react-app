@@ -1,25 +1,18 @@
-import React, { Component } from 'react'
-import { createStore, combineReducers } from 'redux'
+import React from 'react'
 import { Provider } from 'react-redux'
-import { routerReducer } from 'react-router-redux'
 import RouterConfig from './router'
-import * as reducers from './store'
 
-const reducer = combineReducers({
-  ...reducers,
-  routing: routerReducer
-})
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-const store = createStore(
-  reducer
-)
-
-class App extends Component {
   render() {
+    const store = this.props.store
     return (
-      <Provider store={store}>
+      < Provider store= { store } >
         <RouterConfig />
-      </Provider>
+      </Provider >
     );
   }
 }

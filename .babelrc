@@ -3,13 +3,12 @@
     [
       "env",
       {
-        "useBuiltIns": true,
-        "es2015": {
-          "modules": false
-        }
+        "modules": false,
+        "useBuiltIns": true
       }
     ],
-    "react"
+    "react",
+    "react-native"
   ],
   "plugins": [
     "transform-class-properties", [

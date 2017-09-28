@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
 import logo from '../assets/logo.svg'
 import actions from '../actions/count'
 import SayHello from '../components/SayHello'
@@ -46,30 +45,35 @@ class Home extends React.Component {
 
   decrease = () => {
     const { decrease } = this.props;
-
-    console.log(this)
     decrease(1)
   }
 
   render() {
     const { counter, increase } = this.props
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+        <div className="App">
+          <div className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h2>Welcome to React</h2>
+          </div>
+          <p className="App-intro">
+            To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Link to="/list">List Component</Link>
-        <Link to="/topics">Topics Component</Link>
-        <Link to="/todo">TodoList Component</Link>
-        <p>{counter}</p>
-        <SayHello name='Tom'></SayHello>
+          <ul>
+            <li><Link to="/list">List</Link></li>
+            <li><Link to="/topics">Topics</Link></li>
+            <li><Link to="/todo">TodoList</Link></li>
+            <li><Link to="/anim">Animated</Link></li>
+          </ul>
+          <div>
+            <button onClick={this.increase}>increase</button>
+            <button onClick={this.decrease}>decrease</button>
+          </div>
+          <p>{counter}</p>
+          <SayHello name='Tom'></SayHello>
 
-        <Route path="/home/list" component={List} />
-      </div>
+          <Route path="/home/list" component={List} />
+        </div>
     )
   }
 }

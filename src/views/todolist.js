@@ -60,14 +60,14 @@ class TodoList extends React.Component {
         <button onClick={() => this.handleAdd()}>Add Item</button>
         <TransitionGroup>
           {this.state.items.map((item, i) => (
-            <FadeTransition key={i}>
+            <Fade key={i}>
               <div>
                 {item}{' '}
                 <button onClick={() => this.handleRemove(i)}>
                   remove
                 </button>
               </div>
-            </FadeTransition>
+            </Fade>
           ))}
         </TransitionGroup>
       </div>

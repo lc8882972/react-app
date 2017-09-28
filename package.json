@@ -9,9 +9,12 @@
     "dev": "cross-env NODE_ENV=development node index.js"
   },
   "dependencies": {
+    "animated": "^0.2.0",
+    "babel-preset-react-native": "^4.0.0",
     "history": "^4.7.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-motion": "^0.5.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
