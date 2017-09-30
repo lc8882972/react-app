@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import CSSTransition from 'react-transition-group/CSSTransition'
 import Transition from 'react-transition-group/Transition'
-import TransitionGroup from 'react-transition-group/TransitionGroup';
 const duration = 300;
 
 const defaultStyle = {
@@ -77,11 +76,6 @@ class Topics extends React.Component {
         </Link>
           </li>
         </ul>
-        {/* <TransitionGroup className="wapper">
-          <FadeCSSTransition key={this.props.location.pathname}>
-           
-          </FadeCSSTransition>
-        </TransitionGroup> */}
         <Route path="/topics/:topicId" component={Topic} />
         <Route exact path={match.url} render={() => (
           <h3>Please select a topic.{match.url}</h3>

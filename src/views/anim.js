@@ -17,12 +17,14 @@ class Anim extends React.Component {
   render() {
     const anim = this.state.anim
     return (
-      <Animated.div
-        style={{ left: anim }}
-        className="circle"
-        onClick={this.handleClick}>
-        Click
+      <div className="view">
+        <Animated.div
+          style={{ left: anim }}
+          className="circle"
+          onClick={this.handleClick}>
+          Click
       </Animated.div>
+      </div>
     );
   }
 }

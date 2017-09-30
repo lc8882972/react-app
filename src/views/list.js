@@ -100,9 +100,7 @@ class List extends React.Component {
 
   render() {
     return (
-      <SlideView>
-        <NumberList items={items} />
-      </SlideView>
+      <NumberList items={items} />
     )
   }
 }
