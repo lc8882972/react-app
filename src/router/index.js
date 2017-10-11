@@ -1,13 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect, withRouter } from 'react-router-dom'
-import MSwitch from './switch'
+// import MSwitch from './switch'
 import Home from '../views/home'
 import List from '../views/list'
 import Collapse from '../views/collapse'
 import TodoList from '../views/todolist'
 import Topics from '../views/Topic'
-import Anim from '../views/anim'
-// const history = createHistory()
+// import Anim from '../views/anim'
 import CSSTransition from 'react-transition-group/CSSTransition'
 import Transition from 'react-transition-group/Transition'
 import TransitionGroup from 'react-transition-group/TransitionGroup'
@@ -59,15 +58,14 @@ const Routers = ({ ...props }) => {
         timeout={400}
         classNames={'pageSliderLeft'}
       >
-        <MSwitch location={location}>
+        <Switch location={location}>
           <Redirect exact from='/' to='/home' />
           <Route path="/home" component={Home} />
           <Route path="/list" component={List} />
           <Route path="/topics" component={Topics} />
           <Route path="/collapse" component={Collapse} />
           <Route path="/todo" component={TodoList} />
-          <Route path="/anim" component={Anim} />
-        </MSwitch>
+        </Switch>
       </CSSTransition>
     </TransitionGroup>
   )

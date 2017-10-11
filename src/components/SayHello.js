@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 class SayHello extends React.Component {
   constructor(props) {
     super(props);
-    this.state= { message: 'Hello!' };
+    this.state= { message: 'Hello!' }
   }
 
   componentDidMount() {
@@ -16,8 +16,7 @@ class SayHello extends React.Component {
   // WARNING: this syntax is experimental!
   // Using an arrow here binds the method:
   handleClick= () => {
-    // alert(this.state.message);
-    
+    alert(this.state.message)
   }
 
   render() {
@@ -27,4 +26,4 @@ class SayHello extends React.Component {
   }
 }
 
-export default SayHello;
+export default SayHello

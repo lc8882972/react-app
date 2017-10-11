@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import SlideView from '../components/views/slideIn'
 // Create an Input component that'll render an <input> tag with some styles
 const Avatar = styled.img`
   display: block;

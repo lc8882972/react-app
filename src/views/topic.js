@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
-import CSSTransition from 'react-transition-group/CSSTransition'
+import PropTypes from 'prop-types'
+// import CSSTransition from 'react-transition-group/CSSTransition'
 import Transition from 'react-transition-group/Transition'
 const duration = 300;
 
@@ -13,7 +14,7 @@ const transitionStyles = {
   entered: { opacity: 1 },
 }
 
-const Fade = ({ in: inProp, children, ...props }) => (
+const Fade = ({ in: inProp, children }) => (
   <Transition in={inProp} timeout={duration}>
     {(state) => (
       <div style={{
@@ -25,16 +26,19 @@ const Fade = ({ in: inProp, children, ...props }) => (
     )}
   </Transition>
 )
-
-const FadeCSSTransition = ({ children, ...props }) => (
-  <CSSTransition
-    {...props}
-    timeout={5000}
-    classNames="slide"
-  >
-    {children}
-  </CSSTransition>
-)
+Fade.propTypes = {
+  in: PropTypes.bool.isRequired,
+  children: PropTypes.element.isRequired
+}
+// const FadeCSSTransition = ({ children, ...props }) => (
+//   <CSSTransition
+//     {...props}
+//     timeout={5000}
+//     classNames="slide"
+//   >
+//     {children}
+//   </CSSTransition>
+// )
 
 const Topic = ({ match }) => (
   <div>
@@ -42,7 +46,14 @@ const Topic = ({ match }) => (
   </div>
 )
 
+Topic.propTypes = {
+  match: PropTypes.object.isRequired
+}
 class Topics extends React.Component {
+  static propTypes = {
+    props: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired
+  }
   constructor(props) {
     super(props)
     this.state = { show: false }
@@ -57,7 +68,7 @@ class Topics extends React.Component {
     return (
       <div>
         <h2>Topics</h2>
-        <Fade in={ this.state.show }>I'm A fade Transition!</Fade>
+        <Fade in={this.state.show}>I'm A fade Transition!</Fade>
         <button onClick={this.handleClick}>按钮</button>
         <ul>
           <li>

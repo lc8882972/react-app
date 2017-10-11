@@ -83,7 +83,6 @@ class ListItem extends React.Component {
       <Item>
         <HD onClick={this.handleClick}>2016-09-18</HD>
         <BD>
-
         </BD>
       </Item>
     </li>)

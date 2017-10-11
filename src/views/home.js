@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import logo from '../assets/logo.svg'
@@ -14,7 +15,7 @@ const mapStateToProps = (state) => {
 }
 
 //将action的所有方法绑定到props上
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     increase: (...args) => {
       dispatch(actions.increase(...args))
@@ -37,7 +38,11 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
   }
-
+  static propTypes = {
+    increase: PropTypes.func.isRequired,
+    decrease: PropTypes.func.isRequired,
+    counter: PropTypes.number.isRequired
+  }
   increase = () => {
     const { increase } = this.props
     increase(1)
@@ -49,7 +54,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { counter, increase } = this.props
+    const { counter } = this.props
     return (
         <div className="App">
           <div className="App-header">
