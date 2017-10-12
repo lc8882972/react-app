@@ -27,8 +27,8 @@ const Fade = ({ in: inProp, children }) => (
   </Transition>
 )
 Fade.propTypes = {
-  in: PropTypes.bool.isRequired,
-  children: PropTypes.element.isRequired
+  in: PropTypes.bool,
+  children: PropTypes.object
 }
 // const FadeCSSTransition = ({ children, ...props }) => (
 //   <CSSTransition
