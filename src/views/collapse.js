@@ -51,7 +51,6 @@ class ListItem extends React.Component {
 
   handleClick() {
     this.setState({show: !this.state.show})
-    console.log(this)
   }
   render() {
     const item = this.props.data

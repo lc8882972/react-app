@@ -2984,6 +2984,10 @@ once@^1.3.0, once@^1.3.3:
   dependencies:
     wrappy "1"
 
+only-react-css-property-operations@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/only-react-css-property-operations/download/only-react-css-property-operations-1.0.0.tgz#dfc65acbc36d2516bddffd09faeb7de8d0b45482"
+
 os-browserify@^0.2.0:
   version "0.2.1"
   resolved "http://registry.npm.taobao.org/os-browserify/download/os-browserify-0.2.1.tgz#63fc4ccee5d2d7763d26bbf8601078e6c2e0044f"
@@ -3563,6 +3567,13 @@ react-deep-force-update@^1.0.0:
 react-deep-force-update@^2.0.1:
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/react-deep-force-update/download/react-deep-force-update-2.1.1.tgz#8ea4263cd6455a050b37445b3f08fd839d86e909"
+
+react-dom-animated@^1.0.3:
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/react-dom-animated/download/react-dom-animated-1.0.3.tgz#adf9877045c23e40f7a7ef7dbc7381abe1dba02c"
+  dependencies:
+    animated "^0.2.0"
+    only-react-css-property-operations "^1.0.0"
 
 react-dom@^16.0.0:
   version "16.0.0"

@@ -28,7 +28,7 @@ const Fade = ({ in: inProp, children }) => (
 )
 Fade.propTypes = {
   in: PropTypes.bool,
-  children: PropTypes.object
+  children: PropTypes.string
 }
 // const FadeCSSTransition = ({ children, ...props }) => (
 //   <CSSTransition
@@ -51,7 +51,6 @@ Topic.propTypes = {
 }
 class Topics extends React.Component {
   static propTypes = {
-    props: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired
   }
   constructor(props) {

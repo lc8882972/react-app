@@ -1,5 +1,5 @@
 import React from 'react'
-import Animated from 'animated/src/targets/react-dom'
+import Animated from 'react-dom-animated'
 
 class Anim extends React.Component {
   constructor(props) {
