@@ -10,16 +10,14 @@ import '../App.css'
 
 const mapStateToProps = (state) => {
   return {
-    counter: state.default.number
+    counter: state.toJS().default.number
   }
 }
 
 //将action的所有方法绑定到props上
 const mapDispatchToProps = (dispatch) => {
   return {
-    increase: (...args) => {
-      dispatch(actions.increase(...args))
-    },
+    increase: (...args) => dispatch(actions.increase(...args)),
     decrease: (...args) => dispatch(actions.decrease(...args))
   }
 }
@@ -46,29 +44,29 @@ class Home extends React.Component {
   render() {
     const { counter } = this.props
     return (
-        <div className="App">
-          <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h2>Welcome to React</h2>
-          </div>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-          <ul>
-            <li><Link to="/list">List</Link></li>
-            <li><Link to="/topics">Topics</Link></li>
-            <li><Link to="/todo">TodoList</Link></li>
-            <li><Link to="/anim">Animated</Link></li>
-          </ul>
-          <div>
-            <button onClick={this.increase}>increase</button>
-            <button onClick={this.decrease}>decrease</button>
-          </div>
-          <p>{counter}</p>
-          <SayHello name='Tom'></SayHello>
-
-          <Route path="/home/list" component={List} />
+      <div className="App">
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Welcome to React</h2>
         </div>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
+        <ul>
+          <li><Link to="/list">List</Link></li>
+          <li><Link to="/topics">Topics</Link></li>
+          <li><Link to="/todo">TodoList</Link></li>
+          <li><Link to="/anim">Animated</Link></li>
+        </ul>
+        <div>
+          <button onClick={this.increase}>increase</button>
+          <button onClick={this.decrease}>decrease</button>
+        </div>
+        <p>{counter}</p>
+        <SayHello name='Tom'></SayHello>
+
+        <Route path="/home/list" component={List} />
+      </div>
     )
   }
 }

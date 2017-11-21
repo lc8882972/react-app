@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect, withRouter } from 'react-router-dom'
-// import MSwitch from './switch'
 import Home from '../views/home'
 import List from '../views/list'
 import Collapse from '../views/collapse'
