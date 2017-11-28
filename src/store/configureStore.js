@@ -1,7 +1,6 @@
-import { routerReducer } from 'react-router-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { createEpicMiddleware, combineEpics } from 'redux-observable'
-import { combineReducers } from 'redux-immutablejs';
+import { combineReducers } from 'redux-immutable';
 import Immutable from 'immutable';
 import { incrementEpic } from '../epics'
 import * as reducers from '../reducers/count'
@@ -11,9 +10,9 @@ const rootEpic = combineEpics(
 );
 
 const rootReducer = combineReducers({
-  ...reducers,
-  routing: routerReducer
+  ...reducers
 })
+
 const epicMiddleware = createEpicMiddleware(rootEpic)
 
 export default function configureStore() {
