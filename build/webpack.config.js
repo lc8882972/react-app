@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack') //to access built-in plugins
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 var config = {
   entry: [
@@ -69,6 +70,7 @@ var config = {
       filename: 'index.html',
       template: 'index.html'
     }),
+    new BundleAnalyzerPlugin(),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor',
     //   minChunks: function (module) {

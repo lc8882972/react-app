@@ -2,24 +2,30 @@ const path = require('path')
 const webpack = require('webpack') //to access built-in plugins
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
+const PROJECT_ROOT = path.resolve(__dirname, '../')
+const NODE_MODULES = path.resolve(__dirname, 'node_modules')
 var config = {
-  entry: [
-    './src/main.js',
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000'
-  ],
+  entry: {
+    index: './src/main.js',
+    vendor: ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux', 'react-router-redux']
+  },
   output: {
     publicPath: '/',
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
-    chunkFilename: '[id].[chunkhash:8].js'
+    path: path.resolve(PROJECT_ROOT, 'dist'),
+    filename: '[name].[chunkhash:8].js',
+    chunkFilename: '[name].chunk.[chunkhash:8].js'
   },
   devtool: '#source-map',
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader'
+        use: 'babel-loader',
+        exclude: /node_modules/,
+        include: path.resolve(PROJECT_ROOT, 'src')
       },
       // {
       //   test: require.resolve('jquery'),
@@ -38,22 +44,6 @@ var config = {
           ]
         })
       },
-      // {
-      //   test: /\.scss$/,
-      //   use: ExtractTextPlugin.extract({
-      //     use: [
-      //       {
-      //         loader: 'css-loader' // translates CSS into CommonJS
-      //       },
-      //       {
-      //         loader: 'postcss-loader'
-      //       },
-      //       {
-      //         loader: 'sass-loader'
-      //       }
-      //     ]
-      //   })
-      // },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
@@ -74,21 +64,23 @@ var config = {
   },
   resolve: {
     alias: {
-      // 'vue$': 'vue/dist/vue'
-    }
+
+    },
+    extensions: ['.js']
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html'
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
+      name: ['vendor'],
       minChunks: function (module) {
         // any required modules inside node_modules are extracted to vendor
         return (
-          module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
+          module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(NODE_MODULES) === 0
         )
       }
     }),
@@ -96,7 +88,6 @@ var config = {
       name: 'manifest',
       chunks: ['vendor']
     }),
-    new webpack.HotModuleReplacementPlugin()
   ]
 }
 
