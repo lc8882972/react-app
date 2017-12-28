@@ -84,6 +84,7 @@ var config = {
     //   name: 'manifest',
     //   chunks: ['vendor']
     // }),
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
 }
