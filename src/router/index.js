@@ -1,7 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import CSSTransition from 'react-transition-group/CSSTransition'
-import Transition from 'react-transition-group/Transition'
 import TransitionGroup from 'react-transition-group/TransitionGroup'
 
 import Home from '../views/home'
@@ -38,8 +37,6 @@ const WrapRouters = withRouter(Routers)
 
 export default function RouterMap() {
   return (
-    <BrowserRouter>
-      <WrapRouters />
-    </BrowserRouter>
+    <WrapRouters />
   )
 }

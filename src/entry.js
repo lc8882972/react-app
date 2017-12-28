@@ -3,15 +3,12 @@ import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import './styles/flexible.css'
 import './styles/layout.css'
-import './index.css'
 import App from './App'
-import createStore from './store/configureStore'
 
-const store = createStore()
 const render = Component => {
   ReactDOM.render(
     <AppContainer >
-      <Component store={store} />
+      <Component/>
     </AppContainer >,
     document.getElementById('root')
   )

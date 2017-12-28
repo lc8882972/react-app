@@ -1,20 +1,23 @@
 import React from 'react'
 import { Provider } from 'react-redux'
+import { BrowserRouter} from 'react-router-dom'
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
 import RouterConfig from './router'
+import createStore from './store/configureStore'
+// Create a history of your choosing (we're using a browser history in this case)
+const history = createHistory()
 
-class App extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+// Build the middleware for intercepting and dispatching navigation actions
+const middleware = routerMiddleware(history)
+const store = createStore(middleware)
 
-  render() {
-    const store = this.props.store
-    return (
-      < Provider store= { store } >
+export default () => {
+  return (
+    <Provider store={store} >
+      <ConnectedRouter history={history}>
         <RouterConfig />
-      </Provider >
-    );
-  }
-}
-
-export default App;
+      </ConnectedRouter>
+    </Provider >
+  );
+};

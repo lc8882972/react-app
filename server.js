@@ -22,6 +22,10 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/index.html');
 })
 
+app.get("/api/user", function (req, res) {
+  res.json({ id: 1, name: 'Tom' })
+})
+
 app.listen(port, () => {
   console.log(`server started at localhost:${port}`)
 })

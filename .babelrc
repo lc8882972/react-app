@@ -1,42 +1,11 @@
 ﻿{
   "presets": [
-    [
-      "env",
-      {
-        "modules": false,
-        "useBuiltIns": true
-      }
-    ],
+    "env",
     "react",
     "react-native"
   ],
   "plugins": [
-    "transform-class-properties", [
-      "transform-object-rest-spread",
-      {
-        "useBuiltIns": true
-      }
-    ],
-    [
-      "transform-react-jsx",
-      {
-        "useBuiltIns": true
-      }
-    ],
-    [
-      "transform-runtime",
-      {
-        "helpers": false,
-        "polyfill": false,
-        "regenerator": true
-      }
-    ],
-    [
-      "transform-regenerator",
-      {
-        "async": false
-      }
-    ]
+
   ],
   "env": {
     "development": {

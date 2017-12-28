@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import logo from '../assets/logo.svg'
 import actions from '../actions/count'
+import fetchUserActions  from '../actions/user'
 import SayHello from '../components/SayHello'
 import List from './list'
 import '../App.css'
@@ -18,7 +19,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     increase: (...args) => dispatch(actions.increase(...args)),
-    decrease: (...args) => dispatch(actions.decrease(...args))
+    decrease: (...args) => dispatch(actions.decrease(...args)),
+    fechUser: (...args) => dispatch(fetchUserActions.pending(...args))
   }
 }
 
@@ -39,6 +41,10 @@ class Home extends React.Component {
   decrease = () => {
     const { decrease } = this.props;
     decrease(1)
+  }
+
+  componentDidMount() {
+    this.props.fechUser(1);
   }
 
   render() {

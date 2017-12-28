@@ -2,27 +2,31 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { createEpicMiddleware, combineEpics } from 'redux-observable'
 import { combineReducers } from 'redux-immutable';
 import Immutable from 'immutable';
-import { incrementEpic } from '../epics'
+import { incrementEpic, fetchUserEpic } from '../epics'
 import * as reducers from '../reducers/count'
+import routerReducer from '../reducers/router'
 
 const rootEpic = combineEpics(
-  incrementEpic
+  incrementEpic,
+  fetchUserEpic
 );
 
 const rootReducer = combineReducers({
-  ...reducers
+  ...reducers,
+  router: routerReducer
 })
 
 const epicMiddleware = createEpicMiddleware(rootEpic)
 
-export default function configureStore() {
+export default function configureStore(middleware) {
   const store = createStore(
     rootReducer,
-    compose(
-      applyMiddleware(
-        epicMiddleware
-      )
+
+    applyMiddleware(
+      epicMiddleware,
+      ...middleware
     )
+
   );
   return store
 }
