@@ -55,10 +55,10 @@ ListItem.propTypes = {
 };
 
 
-function NumberList(props) {
+function List(props) {
   const array = props.items
-  const listItems = array.map((data) =>
-    <ListItem key={data.id.toString()} data={data} />
+  const listItems = array.map((data, index) =>
+    <li key={index}>{props.children(data)}</li>
   )
   return (
     <ul>
@@ -67,8 +67,9 @@ function NumberList(props) {
   )
 }
 
-NumberList.propTypes = {
-  items: PropTypes.array.isRequired
+List.propTypes = {
+  items: PropTypes.array.isRequired,
+  children: PropTypes.func.isRequired,
 };
 
 const items = [
@@ -89,18 +90,45 @@ const items = [
     imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
     title: '孕期胎儿十月发育过程图',
     desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨'
+  },
+  {
+    id: 4,
+    imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
+    title: '孕期胎儿十月发育过程图',
+    desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨'
+  },
+  {
+    id: 5,
+    imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
+    title: '孕期胎儿十月发育过程图',
+    desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨'
+  },
+  {
+    id: 6,
+    imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
+    title: '孕期胎儿十月发育过程图',
+    desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨'
   }
 ]
 
-class List extends React.Component {
+class ListView extends React.Component {
   constructor(props) {
     super(props)
   }
 
   render() {
     return (
-      <NumberList items={items} />
+      <List className={"list"} items={items}>{
+        (props) =>
+          (<Item>
+            <Avatar src={props.imgurl}></Avatar>
+            <Box>
+              <Title>{props.title}</Title>
+              <Text>{props.desc}</Text>
+            </Box>
+          </Item>)
+      }</List>
     )
   }
 }
-export default List
+export default ListView

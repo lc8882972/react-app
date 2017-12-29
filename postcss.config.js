@@ -1,5 +1,3 @@
-var autoprefixer = require('autoprefixer');
-var px2rem = require('postcss-px2rem');
 module.exports = {
   plugins: {
     autoprefixer: {

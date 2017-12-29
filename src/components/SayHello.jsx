@@ -1,9 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class SayHello extends React.Component {
+  static propTypes = {
+    name: PropTypes.string
+  }
   constructor(props) {
     super(props);
-    this.state= { message: 'Hello!' }
+    this.state = { message: 'Hello!' }
   }
 
   componentDidMount() {
@@ -15,13 +19,13 @@ class SayHello extends React.Component {
   }
   // WARNING: this syntax is experimental!
   // Using an arrow here binds the method:
-  handleClick= () => {
+  handleClick = () => {
     alert(this.state.message)
   }
 
   render() {
-    return ( 
-        <button onClick = { this.handleClick } >hello {this.props.name} </button>
+    return (
+      <button onClick={this.handleClick} >hello {this.props.name} </button>
     );
   }
 }

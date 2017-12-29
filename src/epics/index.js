@@ -23,10 +23,6 @@ export const incrementEpic = (action$) => {
         .mapTo(increase(1))
 }
 
-for (let index = 0; index < array.length; index++) {
-    const element = array[index];
-
-}
 export const fetchUserEpic = (action$) =>
     action$.ofType('FETCH_USER_PENDING')
     .mergeMap(() => Observable.fromPromise(fetch.get('/api/user')).map(res => success(res.data)).catch(error => Observable.of(failure(error))))

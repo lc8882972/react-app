@@ -1,26 +1,21 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-
-const numbers = [1, 2, 3, 4, 5];
-const listItems = numbers.map((numbers) =>
-  <li>{numbers}</li>
-);
-
-class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state= {items: [1, 2, 3, 4, 5] };
-  }
-
-  render() {
-    const numbers = [1, 2, 3, 4, 5];
-    console.log(numbers)
-    return (
-        <ul> 
-        {listItems}
-        </ul>
-    );
-  }
+function List(props) {
+  const array = props.items
+  const listItems = array.map((data, index) =>
+    <li key={index}>{props.children(data)}</li>
+  )
+  return (
+    <ul>
+      {listItems}
+    </ul>
+  )
 }
 
-export default List;
+List.propTypes = {
+  items: PropTypes.array.isRequired,
+  children: PropTypes.func.isRequired,
+};
+
+export default List

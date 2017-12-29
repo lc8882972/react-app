@@ -1,4 +1,3 @@
-const path = require('path')
 var webpack = require('webpack')
 var express = require('express')
 var app = express()
@@ -23,7 +22,7 @@ app.get("/", function (req, res) {
 })
 
 app.get("/api/user", function (req, res) {
-  res.json({ id: 1, name: 'Tom' })
+  res.json({ err_code: 0, data: { id: 1, name: 'Tom' } })
 })
 
 app.listen(port, () => {

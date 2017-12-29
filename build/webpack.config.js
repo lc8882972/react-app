@@ -12,7 +12,14 @@ var config = {
       'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
       './src/entry.jsx'
     ],
-    vendor: ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux', 'react-router-redux']
+    vendor: [
+      'react', 
+      'react-dom', 
+      'react-router-dom', 
+      'redux', 
+      'react-redux', 
+      'react-router-redux'
+    ]
   },
   output: {
     publicPath: '/',
@@ -20,7 +27,7 @@ var config = {
     filename: '[name].js',
     chunkFilename: '[id].[chunkhash:8].js'
   },
-  devtool: '#cheap-module-eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
   module: {
     rules: [
       {
