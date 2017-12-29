@@ -10,7 +10,7 @@ var config = {
     app: [
       'react-hot-loader/patch',
       'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-      './src/entry.js'
+      './src/entry.jsx'
     ],
     vendor: ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux', 'react-router-redux']
   },
@@ -24,7 +24,7 @@ var config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: 'babel-loader'
       },
       // {

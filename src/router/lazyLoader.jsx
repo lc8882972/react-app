@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function lazyLoader (importComponent) {
+export default function lazyLoader(importComponent) {
   class AsyncComponent extends React.Component {
     state = { Component: null }
 
-    async componentDidMount () {
+    async componentDidMount() {
       const { default: Component } = await importComponent();
 
       this.setState({
@@ -12,7 +12,7 @@ export default function lazyLoader (importComponent) {
       });
     }
 
-    render () {
+    render() {
       const Component = this.state.Component;
 
       return Component
@@ -22,4 +22,4 @@ export default function lazyLoader (importComponent) {
   }
 
   return AsyncComponent;
-};
+}

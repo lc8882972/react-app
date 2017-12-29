@@ -10,9 +10,9 @@ class SlideInView extends React.Component {
   }
   componentDidMount() {
     Animated.timing(
-      this.state.val,   
-      { toValue: 1 },           
-    ).start();                
+      this.state.val,
+      { toValue: 1 },
+    ).start();
   }
   render() {
     return (

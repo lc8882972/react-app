@@ -1,18 +1,32 @@
-import { Observable } from 'rxjs/Observable'
+import {
+    Observable
+} from 'rxjs/Observable'
 import '../rxjs'
 import fetch from '../util/fetch'
-import { INCREASE, DECREASE } from '../constants'
+import {
+    INCREASE
+} from '../constants'
 import fetchUserActions from '../actions/user.js'
-const { success, failure } = fetchUserActions
-// import count from '../actions/count.js'
-// const { increase, decrease } = count
+const {
+    success,
+    failure
+} = fetchUserActions
+import count from '../actions/count.js'
 
-export const incrementEpic = (action$, store) => {
-  return action$.ofType(INCREASE)
-    .delay(1000) // Asynchronously wait 1000ms then continue
-    .mapTo({ type: 'DECREASE', amount: 1 })
+const {
+    increase
+} = count
+
+export const incrementEpic = (action$) => {
+    return action$.ofType(INCREASE)
+        .delay(1000) // Asynchronously wait 1000ms then continue
+        .mapTo(increase(1))
 }
 
-export const fetchUserEpic = (action$, store) =>
-  action$.ofType('FETCH_USER_PENDING')
-    .mergeMap(Observable.fromPromise(fetch.get('/api/user')).map(res => success(res)))
+for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+
+}
+export const fetchUserEpic = (action$) =>
+    action$.ofType('FETCH_USER_PENDING')
+    .mergeMap(() => Observable.fromPromise(fetch.get('/api/user')).map(res => success(res.data)).catch(error => Observable.of(failure(error))))

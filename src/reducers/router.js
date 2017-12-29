@@ -6,7 +6,7 @@ export const LOCATION_CHANGE = '@@router/LOCATION_CHANGE'
 import Immutable from 'immutable'
 
 const initialState = Immutable.fromJS({
-  location: null
+    location: null
 })
 
 /**
@@ -15,10 +15,13 @@ const initialState = Immutable.fromJS({
  * if you have asynchronously-loaded routes, so reading from and relying on
  * this state is discouraged.
  */
-export default function routerReducer(state = initialState, { type, payload } = {}) {
-  if (type === LOCATION_CHANGE) {
-    return state.update('location', value => payload)
-  }
-
-  return state
+export default function routerReducer(
+    state = initialState, {
+        type,
+        payload
+    }) {
+    if (type === LOCATION_CHANGE) {
+        return state.update('location', () => payload)
+    }
+    return state
 }

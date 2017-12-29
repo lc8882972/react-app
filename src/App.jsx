@@ -1,6 +1,5 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { BrowserRouter} from 'react-router-dom'
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 import RouterConfig from './router'
@@ -12,7 +11,7 @@ const history = createHistory()
 const middleware = routerMiddleware(history)
 const store = createStore(middleware)
 
-export default () => {
+const App = () => {
   return (
     <Provider store={store} >
       <ConnectedRouter history={history}>
@@ -21,3 +20,4 @@ export default () => {
     </Provider >
   );
 };
+export default App;
