@@ -1,5 +1,4 @@
 import Immutable from 'immutable'
-// import { INCREASE, DECREASE } from '../constants'
 
 const initialState = Immutable.fromJS({
   user: {

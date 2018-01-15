@@ -1,12 +1,13 @@
 ﻿{
   "presets": [
-    "env",
-    "react"
+    ["env", { "modules": false }],
+    "react",
+    "stage-2"
   ],
-  "plugins": [],
   "env": {
     "development": {
       "plugins": [
+        "react-hot-loader/babel",
         [
           "transform-runtime",
           {
@@ -17,8 +18,7 @@
           }
         ],
         "transform-react-jsx-source",
-        "transform-react-jsx-self",
-        "react-hot-loader/babel"
+        "transform-react-jsx-self"
       ]
     }
   }

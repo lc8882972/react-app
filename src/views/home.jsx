@@ -4,14 +4,15 @@ import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import logo from '../assets/logo.svg'
 import actions from '../actions/count'
-import fetchUserActions  from '../actions/user'
+import fetchUserActions from '../actions/user'
 import SayHello from '../components/SayHello'
+import { Tabs } from '../components/tabs'
 import List from './list'
 import '../App.css'
 
 const mapStateToProps = (state) => {
   return {
-    counter: state.toJS().default.number
+    counter: state.toJS().app.number
   }
 }
 
@@ -31,7 +32,8 @@ class Home extends React.Component {
   static propTypes = {
     increase: PropTypes.func.isRequired,
     decrease: PropTypes.func.isRequired,
-    counter: PropTypes.number.isRequired
+    counter: PropTypes.number.isRequired,
+    fechUser: PropTypes.func
   }
   increase = () => {
     const { increase } = this.props
@@ -63,6 +65,7 @@ class Home extends React.Component {
           <li><Link to="/topics">Topics</Link></li>
           <li><Link to="/todo">TodoList</Link></li>
           <li><Link to="/anim">Animated</Link></li>
+          <li><Link to="/tabel">Tabel</Link></li>
         </ul>
         <div>
           <button onClick={this.increase}>increase</button>
@@ -72,6 +75,18 @@ class Home extends React.Component {
         <SayHello name='Tom'></SayHello>
 
         <Route path="/home/list" component={List} />
+
+        <Tabs>
+          <Tabs.Panel name={1}>
+            11111QWERD
+          </Tabs.Panel>
+          <Tabs.Panel name={2}>
+            <div>22222</div>
+          </Tabs.Panel>
+          <Tabs.Panel name={3}>
+            <div>3333</div>
+          </Tabs.Panel>
+        </Tabs>
       </div>
     )
   }

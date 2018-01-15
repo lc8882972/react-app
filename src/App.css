@@ -151,3 +151,16 @@ body {
     opacity: 0
   }
 }
+
+.tab-header{
+  display: flex;
+}
+
+.tab-header-item{
+  flex: 1;
+  background: #ccc;
+}
+
+.hide{
+  display: none;
+}
