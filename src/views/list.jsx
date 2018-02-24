@@ -1,6 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
+const mapStateToProps = (state) => {
+
+  return {
+    items: state.toJS().user.list
+  }
+}
+
+//将action的所有方法绑定到props上
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//   }
+// }
+
 // Create an Input component that'll render an <input> tag with some styles
 const Avatar = styled.img`
   display: block;
@@ -36,25 +51,6 @@ const Box = styled.div`
   box-sizing: border-box;
 `;
 
-function ListItem(props) {
-  const item = props.data
-  return (
-    <li>
-      <Item>
-        <Avatar src={item.imgurl}></Avatar>
-        <Box>
-          <Title>{item.title}</Title>
-          <Text>{item.desc}</Text>
-        </Box>
-      </Item>
-    </li>)
-}
-
-ListItem.propTypes = {
-  data: PropTypes.object.isRequired
-};
-
-
 function List(props) {
   const array = props.items
   const listItems = array.map((data, index) =>
@@ -72,51 +68,17 @@ List.propTypes = {
   children: PropTypes.func.isRequired,
 };
 
-const items = [
-  {
-    id: 1,
-    imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
-    title: '孕期胎儿十月发育过程图',
-    desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨似的发射点搜索'
-  },
-  {
-    id: 2,
-    imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
-    title: '孕期胎儿十月发育过程图',
-    desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨'
-  },
-  {
-    id: 3,
-    imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
-    title: '孕期胎儿十月发育过程图',
-    desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨'
-  },
-  {
-    id: 4,
-    imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
-    title: '孕期胎儿十月发育过程图',
-    desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨'
-  },
-  {
-    id: 5,
-    imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
-    title: '孕期胎儿十月发育过程图',
-    desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨'
-  },
-  {
-    id: 6,
-    imgurl: 'http://liaowa.oss-cn-shanghai.aliyuncs.com/images/web/20170906153619117.jpg',
-    title: '孕期胎儿十月发育过程图',
-    desc: '发射点发顺丰吗你们能能不能NBA范德萨发射点发顺丰吗你们能能不能NBA范德萨'
-  }
-]
-
 class ListView extends React.Component {
   constructor(props) {
     super(props)
   }
 
+  static propTypes = {
+    items: PropTypes.array.isRequired
+  }
+
   render() {
+    const { items } = this.props;
     return (
       <List className={"list"} items={items}>{
         (props) =>
@@ -131,4 +93,4 @@ class ListView extends React.Component {
     )
   }
 }
-export default ListView
+export default connect(mapStateToProps)(ListView) 

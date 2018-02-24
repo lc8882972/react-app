@@ -12,7 +12,7 @@ import '../App.css'
 
 const mapStateToProps = (state) => {
   return {
-    counter: state.toJS().app.number
+    counter: state.toJS().counter.number
   }
 }
 

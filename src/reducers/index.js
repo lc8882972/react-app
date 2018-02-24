@@ -2,10 +2,12 @@ import { combineReducers } from 'redux-immutable'
 
 import countReducer from './count'
 import routerReducer from './router'
+import userReducer from './user'
 
 const rootReducer = combineReducers({
-  app: countReducer,
-  router: routerReducer
+  user: userReducer,
+  router: routerReducer,
+  counter: countReducer
 })
 
 export default rootReducer;
