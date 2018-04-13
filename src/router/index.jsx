@@ -21,14 +21,15 @@ const Routers = (props) => {
         classNames={'pageSliderLeft'}
       >
         <Switch location={location}>
-          <Redirect exact from='/' to='/home' />
-          <Route path="/home" component={Home} />
+
+          <Route exact path="/" component={Home} />
           <Route path="/list" component={List} />
           <Route path="/topics" component={Topics} />
           <Route path="/collapse" component={Collapse} />
           <Route path="/todo" component={TodoList} />
           <Route path="/tabel" component={FilterableProductTable} />
           {/* <Route path="/anim" component={Anim} /> */}
+          <Redirect from='/' to='/home' />
         </Switch>
       </CSSTransition>
     </TransitionGroup>

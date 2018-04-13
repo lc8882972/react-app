@@ -74,20 +74,7 @@ var config = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html'
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['vendor'],
-      minChunks: function (module) {
-        // any required modules inside node_modules are extracted to vendor
-        return (
-          module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(NODE_MODULES) === 0
-        )
-      }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor']
-    }),
+    })
   ]
 }
 

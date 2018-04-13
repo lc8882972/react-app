@@ -3,22 +3,25 @@ const webpack = require('webpack') //to access built-in plugins
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const manifest = require('../vendor-manifest.json')
 
 const ROOTDIR = path.resolve(__dirname, '../')
 var config = {
+  mode: 'development',
   entry: {
     app: [
       'react-hot-loader/patch',
-      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+      // 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
       './src/entry.jsx'
     ],
     vendor: [
-      'react', 
-      'react-dom', 
-      'react-router-dom', 
-      'redux', 
-      'react-redux', 
-      'react-router-redux'
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'redux',
+      'react-redux',
+      'react-router-redux',
+      'axios'
     ]
   },
   output: {
@@ -28,6 +31,18 @@ var config = {
     chunkFilename: '[id].[chunkhash:8].js'
   },
   devtool: 'cheap-module-eval-source-map',
+  optimization: {
+    // runtimeChunk: true,
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all"
+        }
+      }
+    }
+  },
   module: {
     rules: [
       {
@@ -77,32 +92,18 @@ var config = {
     alias: {
       '@': path.resolve(ROOTDIR, 'src')
     },
-    modules: [path.resolve(ROOTDIR, 'src'), 'node_modules']
+    // modules: [path.resolve(ROOTDIR, 'src'), 'node_modules']
   },
   plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.optimize.ModuleConcatenationPlugin(),
     new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html'
     }),
-    // new BundleAnalyzerPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module) {
-        // any required modules inside node_modules are extracted to vendor
-        return (
-          module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
-        )
-      }
+    new BundleAnalyzerPlugin(),
+    new webpack.DllReferencePlugin({
+      manifest
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'runtime',
-      chunks: ['vendor']
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
   ]
 }
 

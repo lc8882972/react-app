@@ -17,6 +17,8 @@ app.use(require("webpack-hot-middleware")(compiler, {
   heartbeat: 2000
 }))
 
+app.use('/static', express.static('./static'));
+
 app.get("/", function (req, res) {
   res.sendFile(__dirname + '/index.html');
 })
