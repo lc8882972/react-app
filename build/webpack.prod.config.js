@@ -1,31 +1,44 @@
 const path = require('path')
 const webpack = require('webpack') //to access built-in plugins
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 const PROJECT_ROOT = path.resolve(__dirname, '../')
 const NODE_MODULES = path.resolve(__dirname, 'node_modules')
+
 var config = {
+  name: 'app',
+  mode: 'production',
   entry: {
-    index: './src/main.js',
-    vendor: ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux', 'react-router-redux']
+    app: path.resolve(PROJECT_ROOT + '/src/main.jsx')
   },
   output: {
     publicPath: '/',
     path: path.resolve(PROJECT_ROOT, 'dist'),
-    filename: '[name].[chunkhash:8].js',
-    chunkFilename: '[name].chunk.[chunkhash:8].js'
+    filename: 'js/[name].[chunkhash:8].js',
+    chunkFilename: 'js/[name].chunk.[chunkhash:8].js'
   },
   devtool: '#source-map',
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all"
+        }
+      }
+    }
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: 'babel-loader',
-        exclude: /node_modules/,
-        include: path.resolve(PROJECT_ROOT, 'src')
+        // exclude: /node_modules/,
+        // include: path.resolve(PROJECT_ROOT, 'src')
       },
       // {
       //   test: require.resolve('jquery'),
@@ -36,13 +49,10 @@ var config = {
       // },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader' // translates CSS into CommonJS
-            }
-          ]
-        })
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          'css-loader'
+        ]
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -64,16 +74,21 @@ var config = {
   },
   resolve: {
     alias: {
-
+      '@': path.resolve(PROJECT_ROOT, 'src')
     },
-    extensions: ['.js']
+    extensions: ['.js', '.jsx']
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
-    new ExtractTextPlugin('styles.css'),
+    // new BundleAnalyzerPlugin(),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "css/[name].css",
+      // chunkFilename: "css/[id].css"
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'index.html'
+      template: path.resolve(PROJECT_ROOT + '/src/index.html')
     })
   ]
 }

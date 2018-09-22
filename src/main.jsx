@@ -1,16 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import createStore from './store/configureStore'
-import RouterConfig from './router'
-import './index.css'
 // import "babel-polyfill";
-
-const store = createStore()
+import './styles/flexible.css'
+import './styles/layout.css'
+import App from '@/App.jsx'
 
 ReactDOM.render(
-  <Provider store={store}>
-    <RouterConfig />
-  </Provider>,
+  <App />,
   document.getElementById('root')
 )
