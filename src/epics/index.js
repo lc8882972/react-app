@@ -14,12 +14,12 @@ const {
 } = fetchUserActions
 import count from '../actions/count.js'
 
-const { increase } = count
+const { decrease } = count
 
 const incrementEpic = (action$) => {
     return action$.ofType(INCREASE)
         .delay(1000) // Asynchronously wait 1000ms then continue
-        .mapTo(increase(1))
+        .mapTo(decrease(1))
 }
 
 const fetchUserEpic = (action$) =>

@@ -46,7 +46,24 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fechUser(1);
+    console.log('Home->componentDidMount()');
+    // this.props.fechUser(1);
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('getDerivedStateFromProps()');
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('Home->getSnapshotBeforeUpdate()');
+  }
+  componentWillReceiveProps() {
+    console.log('Home->componentWillReceiveProps()');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // if(!prevState.isLogin && prevProps.isLogin) this.handleClose()
+    console.log('Home->componentDidUpdate()');
   }
 
   render() {
@@ -58,7 +75,7 @@ class Home extends React.Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          To get started, edit me to<code>src/App.js</code> and save to reload.
         </p>
         <ul>
           <li><Link to="/list">List</Link></li>

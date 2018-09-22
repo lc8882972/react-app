@@ -1,6 +1,11 @@
 ﻿{
   "presets": [
-    ["env", { "modules": false }],
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ],
     "react",
     "stage-2"
   ],
@@ -8,13 +13,14 @@
     "development": {
       "plugins": [
         "react-hot-loader/babel",
+        "transform-class-properties",
         [
           "transform-runtime",
           {
-            "helpers": false, // defaults to true 
-            "polyfill": false, // defaults to true 
-            "regenerator": true, // defaults to true 
-            "moduleName": "babel-runtime" // defaults to "babel-runtime" 
+            "helpers": false,
+            "polyfill": false,
+            "regenerator": true,
+            "moduleName": "babel-runtime"
           }
         ],
         "transform-react-jsx-source",

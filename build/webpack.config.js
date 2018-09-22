@@ -8,20 +8,12 @@ const manifest = require('../vendor-manifest.json')
 const ROOTDIR = path.resolve(__dirname, '../')
 var config = {
   mode: 'development',
+  dependencies: ["vendor"],
   entry: {
     app: [
       'react-hot-loader/patch',
-      // 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
       './src/entry.jsx'
-    ],
-    vendor: [
-      'react',
-      'react-dom',
-      'react-router-dom',
-      'redux',
-      'react-redux',
-      'react-router-redux',
-      'axios'
     ]
   },
   output: {
@@ -32,7 +24,6 @@ var config = {
   },
   devtool: 'cheap-module-eval-source-map',
   optimization: {
-    // runtimeChunk: true,
     splitChunks: {
       cacheGroups: {
         commons: {
@@ -92,7 +83,6 @@ var config = {
     alias: {
       '@': path.resolve(ROOTDIR, 'src')
     },
-    // modules: [path.resolve(ROOTDIR, 'src'), 'node_modules']
   },
   plugins: [
     new ExtractTextPlugin('styles.css'),
@@ -104,6 +94,7 @@ var config = {
     new webpack.DllReferencePlugin({
       manifest
     }),
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
 
